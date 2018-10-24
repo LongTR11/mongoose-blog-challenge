@@ -14,20 +14,16 @@ function getAll(req,res) {
 
 //post
 function post(req,res) {
-BlogPosts.save(req.body).then(function(blogPost) {
+BlogPosts.create(req.body).then(function(blogPost) {
     res.json(blogPost);
     });
 }
 
 //put
 function update(req, res) {
-    res.json(BlogPosts.update({
-        id: req.params.id,
-        title: req.body.title,
-        content: req.body.content,
-        author: req.body.author,
-        created: req.body.created
-    }));
+    BlogPosts.findOneAndUpdate(req.params.id, req.body, { new: true }, function(err, blogPost) {
+        res.json(blogPost);
+    });
 }
 // delete
 function destroy(req, res) {

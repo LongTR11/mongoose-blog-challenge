@@ -4,10 +4,12 @@ mongoose.Promise = global.Promise;
 const blogPostSchema = mongoose.Schema({
     title: String,
     content: String,
-    author: String,
+    author: 
+        {firstName: String,
+         lastName:  String},
     created: Date
 });
 
-const BlogPost = mongoose.model('BlogPost', blogPostSchema);
+const BlogPosts = mongoose.model('BlogPosts', blogPostSchema);
 
-module.exports = {BlogPost};
+module.exports = {BlogPosts};
