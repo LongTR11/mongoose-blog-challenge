@@ -27,9 +27,9 @@ function update(req, res) {
 }
 // delete
 function destroy(req, res) {
-    const blogPost = req.params.id;
-    BlogPosts.delete(blogPost);
-    res.json({message: 'Blog post terminated.'});
+    BlogPosts.findOneAndRemove(req.params.id).then(function(blogPost) {
+        res.json({message: "blog post terminated"});
+    })
 }
 
 const BlogPostController = {
