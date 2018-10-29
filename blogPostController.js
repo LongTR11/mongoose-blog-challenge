@@ -12,6 +12,13 @@ function getAll(req,res) {
     });
 }
 
+// getOne
+function getOne(req,res) {
+    BlogPosts.findOne().then(function(blogPosts) {
+        res.json(blogPosts);
+    });
+}
+
 //post
 function post(req,res) {
 BlogPosts.create(req.body).then(function(blogPost) {
